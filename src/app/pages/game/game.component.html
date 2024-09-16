@@ -1,0 +1,28 @@
+<div *ngIf="showOverlay" class="tw-w-screen tw-h-screen tw-font-bold tw-backdrop-blur tw-grid tw-place-items-center tw-absolute tw-z-10">
+  <span class="tw-text-6xl">{{ currentUser }}</span>
+</div>
+<form class="tw-flex tw-justify-center tw-items-center tw-w-screen tw-h-screen tw-transition-colors" [ngClass]="{'tw-bg-green-400': currentUser === playerOne, 'tw-bg-blue-400': currentUser === playerTwo}" #form>
+  <div class="tw-flex tw-flex-col tw-border-r-8 tw-border-gray-800">
+    <input type="button" class="button-grid tw-border-b-8 tw-border-gray-800" [class.tw-pointer-events-none]="!canPlay" data-col="A1" [disabled]="!canPlay" (click)="onClick($event, form)"/>
+    <input type="button" class="button-grid tw-border-b-8 tw-border-gray-800" [class.tw-pointer-events-none]="!canPlay" data-col="A2" [disabled]="!canPlay" (click)="onClick($event, form)"/>
+    <input type="button" class="button-grid" [class.tw-pointer-events-none]="!canPlay" data-col="A3" [disabled]="!canPlay" (click)="onClick($event, form)"/>
+  </div>
+  <div class="tw-flex tw-flex-col tw-border-r-8 tw-border-gray-800">
+    <input type="button" class="button-grid tw-border-b-8 tw-border-gray-800" [class.tw-pointer-events-none]="!canPlay" data-col="B1" [disabled]="!canPlay" (click)="onClick($event, form)"/>
+    <input type="button" class="button-grid tw-border-b-8 tw-border-gray-800" [class.tw-pointer-events-none]="!canPlay" data-col="B2" [disabled]="!canPlay" (click)="onClick($event, form)"/>
+    <input type="button" class="button-grid" [class.tw-pointer-events-none]="!canPlay" data-col="B3" [disabled]="!canPlay" (click)="onClick($event, form)"/>
+  </div>
+  <div class="tw-flex tw-flex-col">
+    <input type="button" class="button-grid tw-border-b-8 tw-border-gray-800" [class.tw-pointer-events-none]="!canPlay" data-col="C1" [disabled]="!canPlay" (click)="onClick($event, form)"/>
+    <input type="button" class="button-grid tw-border-b-8 tw-border-gray-800" [class.tw-pointer-events-none]="!canPlay" data-col="C2" [disabled]="!canPlay" (click)="onClick($event, form)"/>
+    <input type="button" class="button-grid" [class.tw-pointer-events-none]="!canPlay" data-col="C3" [disabled]="!canPlay" (click)="onClick($event, form)"/>
+  </div>
+</form>
+<span class="tw-font-semibold tw-absolute tw-right-4 tw-bottom-4">
+  {{ playerOnePoints }} | {{ playerTwoPoints }}
+</span>
+<div class="tw-font-semibold tw-absolute tw-left-4 tw-bottom-4 tw-flex tw-gap-2">
+  <button (click)="onReset(form)">Recomeçar</button>
+  <span>-</span>
+  <button (click)="onLeave()">Sair</button>
+</div>

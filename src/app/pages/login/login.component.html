@@ -1,0 +1,30 @@
+<form class="tw-w-screen tw-h-screen tw-flex tw-flex-col tw-items-center tw-justify-center tw-gap-8 tw-bg-blue-400" [formGroup]="form">
+  <ng-container *ngIf="!filledPlayers">
+    <h1 class="tw-text-6xl tw-text-blue-50 tw-font-semibold">Jogo da velha</h1>
+    <div class="tw-min-w-80 tw-w-2/5 tw-bg-blue-200 tw-shadow-lg tw-shadow-blue-600 tw-rounded-md tw-flex tw-flex-col tw-gap-4 tw-p-8">
+      <div class="tw-flex tw-flex-col tw-gap-1">
+        <label for="playerOne" class="tw-font-semibold tw-text-blue-600">Nome do jogador 1° (será o "X")</label>
+        <input id="playerOne" class="input" formControlName="playerOne" autocomplete="off"/>
+        <p class="tw-text-red-600" *ngIf="playerOne?.touched && playerOne?.hasError('required')">◬ Campo obrigatório!!</p>
+      </div>
+      <div class="tw-flex tw-flex-col tw-gap-1 tw-mb-4">
+        <label for="playerTwo" class="tw-font-semibold tw-text-blue-600">Nome do jogador 2° (será o "O")</label>
+        <input id="playerTwo" class="input" formControlName="playerTwo" autocomplete="off"/>
+        <p class="tw-text-red-600" *ngIf="playerTwo?.touched && playerTwo?.hasError('required')">◬ Campo obrigatório!!</p>
+      </div>
+      <button type="button" class="button" [disabled]="disableButton()" (click)="onSubmit()">Jogar</button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="filledPlayers">
+    <h1 class="tw-text-6xl tw-text-blue-50 tw-font-semibold">Quem começa?</h1>
+    <div class="tw-flex tw-items-center tw-gap-10 tw-p-4">
+      <span class="tw-text-2xl tw-text-white">{{ playerOne?.value }}</span>
+      <div class="demo-container">
+        <div class="progress-bar">
+          <div class="progress-bar-value"></div>
+        </div>
+      </div>
+      <span class="tw-text-2xl tw-text-white">{{ playerTwo?.value }}</span>
+    </div>
+  </ng-container>
+</form>

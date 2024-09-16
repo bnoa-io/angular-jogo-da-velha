@@ -1,0 +1,17 @@
+.button-grid {
+  @apply tw-cursor-pointer tw-w-64 tw-h-64 tw-text-6xl tw-transition-all;
+}
+
+.anime {
+  animation: 300ms linear 300ms infinite alternate toggleFontSize;
+}
+
+@keyframes toggleFontSize {
+  from {
+    @apply tw-text-6xl;
+  }
+
+  to {
+    @apply tw-text-8xl;
+  }
+}
