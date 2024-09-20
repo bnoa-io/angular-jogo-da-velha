@@ -13,7 +13,7 @@ export class LoginComponent {
 
   public form: FormGroup = this._fb.group({
     playerOne: ['', Validators.required],
-    playerTwo: ['', Validators.required]
+    playerTwo: ['', Validators.required],
   });
 
   constructor(
@@ -28,8 +28,6 @@ export class LoginComponent {
 
   public onSubmit(): void {
     if (this.form.valid) {
-      this._matchStateService.playerOne.next(this.playerOne?.value);
-      this._matchStateService.playerTwo.next(this.playerTwo?.value);
       this._randomizeStarterPlayer();
       this.filledPlayers = true;
 
@@ -41,7 +39,10 @@ export class LoginComponent {
 
   private _randomizeStarterPlayer(): void {
     const playerNum = (Math.ceil(Math.random() * 2));
-    this._matchStateService.currentUser.next(playerNum === 1 ? this.playerOne?.value : this.playerTwo?.value);
+
+    this._matchStateService.playerOne.next(playerNum == 1 ? this.playerOne?.value : this.playerTwo?.value);
+    this._matchStateService.playerTwo.next(playerNum == 1 ? this.playerTwo?.value : this.playerOne?.value);
+    this._matchStateService.currentUser.next(this._matchStateService.playerOne.value);
     this._matchStateService.numberCurrentUser.next(playerNum);
   }
 

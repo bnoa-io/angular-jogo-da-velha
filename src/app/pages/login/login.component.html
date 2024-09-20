@@ -3,12 +3,12 @@
     <h1 class="tw-text-6xl tw-text-blue-50 tw-font-semibold">Jogo da velha</h1>
     <div class="tw-min-w-80 tw-w-2/5 tw-bg-blue-200 tw-shadow-lg tw-shadow-blue-600 tw-rounded-md tw-flex tw-flex-col tw-gap-4 tw-p-8">
       <div class="tw-flex tw-flex-col tw-gap-1">
-        <label for="playerOne" class="tw-font-semibold tw-text-blue-600">Nome do jogador 1°</label>
+        <label for="playerOne" class="tw-font-semibold tw-text-blue-600">Nome do jogador</label>
         <input id="playerOne" class="input" formControlName="playerOne" autocomplete="off"/>
         <p class="tw-text-red-600" *ngIf="playerOne?.touched && playerOne?.hasError('required')">◬ Campo obrigatório!!</p>
       </div>
       <div class="tw-flex tw-flex-col tw-gap-1 tw-mb-4">
-        <label for="playerTwo" class="tw-font-semibold tw-text-blue-600">Nome do jogador 2°</label>
+        <label for="playerTwo" class="tw-font-semibold tw-text-blue-600">Nome do outro jogador</label>
         <input id="playerTwo" class="input" formControlName="playerTwo" autocomplete="off"/>
         <p class="tw-text-red-600" *ngIf="playerTwo?.touched && playerTwo?.hasError('required')">◬ Campo obrigatório!!</p>
       </div>
